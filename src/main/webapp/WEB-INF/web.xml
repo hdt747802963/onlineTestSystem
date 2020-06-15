@@ -24,7 +24,7 @@
     <filter-name>HiddenHttpMethodFilter</filter-name>
     <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
   </filter>
-
+<!-- 隐藏参数 -->
   <filter-mapping>
     <filter-name>HiddenHttpMethodFilter</filter-name>
     <url-pattern>/*</url-pattern>
@@ -68,12 +68,12 @@
 
   <error-page>
     <error-code>404</error-code>
-    <location>/WEB-INF/errors/404.jsp</location>
+    <location>/WEB-INF/404.jsp</location>
   </error-page>
 
   <error-page>
     <error-code>500</error-code>
-    <location>/WEB-INF/errors/500.jsp</location>
+    <location>/WEB-INF/500.jsp</location>
   </error-page>
 
   <welcome-file-list>
