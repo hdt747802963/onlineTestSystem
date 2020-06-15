@@ -9,28 +9,28 @@ package com.olts.pojo;
  */
 
 public class Admin {
-    private String account; //用户名
+    private int account; //用户名
     private String password;//密码
     private String name;    //姓名
 
     public Admin(){}
 
-    public Admin(String account, String password) {
+    public Admin(int account, String password) {
         this.account = account;
         this.password = password;
     }
 
-    public Admin(String account, String password, String name) {
+    public Admin(int account, String password, String name) {
         this.account = account;
         this.password = password;
         this.name = name;
     }
 
-    public String getAccount() {
+    public int getAccount() {
         return account;
     }
 
-    public void setAccount(String account) {
+    public void setAccount(int account) {
         this.account = account;
     }
 

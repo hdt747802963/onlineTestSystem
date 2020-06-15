@@ -41,13 +41,13 @@
         <!-- 注入sqlSessionFactory -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!-- 给出需要扫描Dao接口包 -->
-        <property name="basePackage" value="com.olts.mapper"/>
+        <property name="basePackage" value="com.olts.dao"/>
     </bean>
 
     <!-- 动态代理，第二种方式：包扫描（推荐）： -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- basePackage多个包用","分隔 -->
-        <property name="basePackage" value="com.demo.ssm.mapper" />
+        <property name="basePackage" value="com.olts.dao" />
     </bean>
 
     <!-- 事务管理器 -->

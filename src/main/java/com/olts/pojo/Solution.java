@@ -18,13 +18,13 @@ public class Solution {
     private JudgeQuestion judgeQuestion;    //判断题题目
     private SubjectiveQuestion subjectiveQuestion;  //客观题题目
     private int sequenceNumber; //该题目在试卷中的序号
-    private String studentAnser;    //学生该题目的答案
+    private String studentAnswer;    //学生该题目的答案
     private int correctState;   //批改状态（0：未批改，1：已批改）
 
     public Solution(){}
 
     //含有选择题的构造函数
-    public Solution(int solutionId, Student student, Exam exam, Paper paper, int questionCat, ChoiceQuestion choiceQuestion, int sequenceNumber, String studentAnser, int correctState) {
+    public Solution(int solutionId, Student student, Exam exam, Paper paper, int questionCat, ChoiceQuestion choiceQuestion, int sequenceNumber, String studentAnswer, int correctState) {
         this.solutionId = solutionId;
         this.student = student;
         this.exam = exam;
@@ -32,12 +32,12 @@ public class Solution {
         this.questionCat = questionCat;
         this.choiceQuestion = choiceQuestion;
         this.sequenceNumber = sequenceNumber;
-        this.studentAnser = studentAnser;
+        this.studentAnswer = studentAnswer;
         this.correctState = correctState;
     }
 
     //含有判断题的构造函数
-    public Solution(int solutionId, Student student, Exam exam, Paper paper, int questionCat, JudgeQuestion judgeQuestion, int sequenceNumber, String studentAnser, int correctState) {
+    public Solution(int solutionId, Student student, Exam exam, Paper paper, int questionCat, JudgeQuestion judgeQuestion, int sequenceNumber, String studentAnswer, int correctState) {
         this.solutionId = solutionId;
         this.student = student;
         this.exam = exam;
@@ -45,13 +45,13 @@ public class Solution {
         this.questionCat = questionCat;
         this.judgeQuestion = judgeQuestion;
         this.sequenceNumber = sequenceNumber;
-        this.studentAnser = studentAnser;
+        this.studentAnswer = studentAnswer;
         this.correctState = correctState;
     }
 
     //含有主观题的构造函数
 
-    public Solution(int solutionId, Student student, Exam exam, Paper paper, int questionCat, SubjectiveQuestion subjectiveQuestion, int sequenceNumber, String studentAnser, int correctState) {
+    public Solution(int solutionId, Student student, Exam exam, Paper paper, int questionCat, SubjectiveQuestion subjectiveQuestion, int sequenceNumber, String studentAnswer, int correctState) {
         this.solutionId = solutionId;
         this.student = student;
         this.exam = exam;
@@ -59,7 +59,7 @@ public class Solution {
         this.questionCat = questionCat;
         this.subjectiveQuestion = subjectiveQuestion;
         this.sequenceNumber = sequenceNumber;
-        this.studentAnser = studentAnser;
+        this.studentAnswer = studentAnswer;
         this.correctState = correctState;
     }
 
@@ -136,11 +136,11 @@ public class Solution {
     }
 
     public String getStudentAnser() {
-        return studentAnser;
+        return studentAnswer;
     }
 
     public void setStudentAnser(String studentAnser) {
-        this.studentAnser = studentAnser;
+        this.studentAnswer = studentAnswer;
     }
 
     public int getCorrectState() {
@@ -163,7 +163,7 @@ public class Solution {
                 ", judgeQuestion=" + judgeQuestion +
                 ", subjectiveQuestion=" + subjectiveQuestion +
                 ", sequenceNumber=" + sequenceNumber +
-                ", studentAnser='" + studentAnser + '\'' +
+                ", studentAnser='" + studentAnswer + '\'' +
                 ", correctState=" + correctState +
                 '}';
     }
