@@ -6,9 +6,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 	   http://www.springframework.org/schema/context
-  http://www.springframework.org/schema/context/spring-context-4.3.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!-- 指定需要扫描的包 -->
-    <context:component-scan base-package="com.olts" />
+    <context:component-scan base-package="com.olts.controller" >
+    <context:include-filter type="annotation"
+                            expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
 
     <!-- 配置注解驱动 -->
     <mvc:annotation-driven/>
@@ -21,46 +26,36 @@
     <!-- 定义视图解析器 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 设置前缀 -->
-        <property name="prefix" value="/jsp/" />
+        <property name="prefix" value="/WEB-INF/" />
         <!-- 设置后缀 -->
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <!-- 显示的装配自定义类型转换器 -->
-<!--    <mvc:annotation-driven conversion-service="conversionService"/>-->
-<!--    &lt;!&ndash; 自定义类型转换器配置 &ndash;&gt;-->
-<!--    &lt;!&ndash;    <bean id="conversionService" class=&ndash;&gt;-->
-<!--    &lt;!&ndash;            "org.springframework.context.support.ConversionServiceFactoryBean">&ndash;&gt;-->
-<!--    &lt;!&ndash;        <property name="converters">&ndash;&gt;-->
-<!--    &lt;!&ndash;            <set>&ndash;&gt;-->
-<!--    &lt;!&ndash;                <bean class="com.springmvc.demo.convert.DateConverter"/>&ndash;&gt;-->
-<!--    &lt;!&ndash;            </set>&ndash;&gt;-->
-<!--    &lt;!&ndash;        </property>&ndash;&gt;-->
-<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
-<!--    &lt;!&ndash; 自定义类型格式化转换器配置 &ndash;&gt;-->
-<!--    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">-->
-<!--        <property name="formatters">-->
-<!--            <set>-->
-<!--                <bean class="com.springmvc.demo.convert.DateFormatter"/>-->
-<!--            </set>-->
-<!--        </property>-->
-<!--    </bean>-->
-
-    <!--全局拦截器-->
-<!--    <mvc:interceptors>-->
-<!--        &lt;!&ndash;使用bean直接定义在<mvc:interceptors>下面的拦截器将拦截所有请求&ndash;&gt;-->
-<!--&lt;!&ndash;        <bean class="com.springmvc.demo.intercepetor.LoginIntercepter"/>&ndash;&gt;-->
-<!--        <mvc:interceptor>-->
-<!--            <mvc:mapping path="/**"/>-->
-<!--            <mvc:exclude-mapping path="/toMain"/>-->
-<!--            <bean class="com.springmvc.demo.intercepetor.LoginIntercepter" />-->
-<!--        </mvc:interceptor>-->
-<!--    </mvc:interceptors>-->
-
-    <!-- 配置文件上传解析器 MultipartResolver -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <!-- 设置请求编码格式-->
-        <property name="defaultEncoding" value="UTF-8"/>
+    <!-- 文件上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 上传文件大小限制 -->
+        <property name="maxUploadSize">
+            <value>10485760</value>
+        </property>
+        <!-- 请求的编码格式, 和 jsp 页面一致 -->
+        <property name="defaultEncoding">
+            <value>UTF-8</value>
+        </property>
     </bean>
+
+    <!-- 后台访问拦截器 -->
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/system/login"/>
+            <mvc:exclude-mapping path="/system/get_cpacha"/>
+            <mvc:exclude-mapping path="/h-ui/**"/>
+            <mvc:exclude-mapping path="/easyui/**"/>
+            <bean class="com.olts.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
 
 </beans>
