@@ -6,7 +6,7 @@ import com.olts.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -24,7 +24,9 @@ public class LoginController {
 
     @RequestMapping("/studentLogin")
     public String studentLogin(User user, HttpSession session, Model model) {
+        //System.out.println(user.getUid() + " " + user.getUpwd());
         Student stu = new Student(user.getUid(), user.getUpwd());
+        //System.out.println(stu);
         Student student = studentService.studentLogin(stu);
         session.setAttribute("userInfo", user);
         System.out.println("student:"+ student);

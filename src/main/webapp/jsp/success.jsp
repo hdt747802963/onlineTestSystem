@@ -15,7 +15,7 @@
 this is success page!
 
 
-<form action="/onlineTestSystem/login/outLogin">
+<form action="${pageContext.request.contextPath}/login/outLogin">
     <table>
         <tr>
             <td><input type="submit" value="退出登录"></td>
