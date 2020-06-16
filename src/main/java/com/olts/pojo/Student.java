@@ -12,7 +12,7 @@ public class Student {
     private int studentId;  //学生账号
     private String password; //学生密码
     private String studentName; //学生姓名
-    private boolean gender; //学生性别；0：女，1：男
+    private int gender; //学生性别；0：女，1：男
     private String birthday;
     private String phone;
     private ClassInfo classInfo;    //学生班级
@@ -51,11 +51,11 @@ public class Student {
         this.studentName = studentName;
     }
 
-    public boolean isGender() {
+    public int isGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 

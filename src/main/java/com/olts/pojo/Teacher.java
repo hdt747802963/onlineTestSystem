@@ -12,7 +12,7 @@ public class Teacher {
     private int teacherId;
     private String password;
     private String teacherName;
-    private boolean gender; //性别；0：女，1：男
+    private int gender; //性别；0：女，1：男
     private String email;
 
     //无参构造
@@ -24,7 +24,7 @@ public class Teacher {
         this.password = password;
     }
 
-    public Teacher(int teacherId, String password, String teacherName, boolean gender, String email) {
+    public Teacher(int teacherId, String password, String teacherName, int gender, String email) {
         this.teacherId = teacherId;
         this.password = password;
         this.teacherName = teacherName;
@@ -56,11 +56,11 @@ public class Teacher {
         this.teacherName = teacherName;
     }
 
-    public boolean isGender() {
+    public int isGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
